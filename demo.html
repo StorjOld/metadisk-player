@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Video.js | HTML5 Video Player</title>
+
+  <!-- Chang URLs to wherever Video.js files will be hosted -->
+  <link href="video-js.css" rel="stylesheet" type="text/css">
+  <!-- video.js must be in the <head> for older IEs to work. -->
+  <script src="video.js"></script>
+
+  <!-- Unless using the CDN hosted version, update the URL to the Flash SWF -->
+  <script>
+    videojs.options.flash.swf = "video-js.swf";
+	
+  </script>
+
+
+</head>
+<body>
+<div style="width:768px; margin:30px auto;">
+    <div style="margin:20px 0;">
+    Video Source: <input id="videoURL" style="width:100%;" value="http://node1.storj.io/api/download/a07b4fdd12a56a7a78e61ce12b1a1c4327bb9d46a26d3ce1a5911ee64d2097d5?key=8806e8ec8e263a100cdcb472177cfbd7bd83979a118e0ae1abd2f27abee259c4&token=gSaTzPwhOI8FELor"> <button id="videoUrlSubmit">OK</button>
+    </div>
+      <video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="640" height="264"
+          poster="http://video-js.zencoder.com/oceans-clip.png"
+          data-setup="{}">
+        <source id="videoSource" src="http://node1.storj.io/api/download/a07b4fdd12a56a7a78e61ce12b1a1c4327bb9d46a26d3ce1a5911ee64d2097d5?key=8806e8ec8e263a100cdcb472177cfbd7bd83979a118e0ae1abd2f27abee259c4&token=gSaTzPwhOI8FELor" type='video/mp4' />
+       
+        <track kind="captions" src="demo.captions.vtt" srclang="en" label="English"></track><!-- Tracks need an ending tag thanks to IE9 -->
+        <track kind="subtitles" src="demo.captions.vtt" srclang="en" label="English"></track><!-- Tracks need an ending tag thanks to IE9 -->
+        <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+      </video>
+</div> 
+  
+<script>
+    videojs.options.flash.swf = "video-js.swf";
+	var video = _V_("example_video_1");
+	var videoElement = document.getElementById("example_video_1");
+	var input = document.getElementById("videoURL");
+	var btn = document.getElementById("videoUrlSubmit");
+	input.addEventListener("keyup", function(e){
+		
+		if(e.which == 13){
+			video.src({ type: "video/mp4", src: input.value });
+			video.load();
+			video.ready(function () {
+				video.play();
+			});
+		}
+	});
+	btn.addEventListener("click", function(e){
+		video.src({ type: "video/mp4", src: input.value });
+			video.load();
+			video.ready(function () {
+				video.play();
+			});
+		
+	});
+  </script>
+
+</body>
+</html>
