@@ -1,4 +1,4 @@
 metadisk-player
 ===============
 
-Demo for a "decentralized Youtube" using Metadisk. 
+Demo for a decentralized video player using Metadisk.
